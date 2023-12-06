@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+    <title>Логин</title>
+</head>
+
+<body>
+    <main>
+        <div class="login_user">
+            <span>Логин пользователя</span>
+        </div>
+        <form method="POST" action="#">
+            <div class="name">
+                <label>Ваш логин:</label>
+                <input type="text" name="auth_name" id="login-name" placeholder="Введите ваш логин" required>
+            </div>
+            <div class="password">
+                <label>Ваш пароль:</label>
+                <input type="password" name="auth_password" id="login-pass" placeholder="Введите ваш пароль" required>
+            </div>
+            <button value="login" type="submit" name="form_auth_button" id="login-sumbit">Войти</button>
+            <button type="submit" id="back-registration-sumbit"><a href="../registration/index.html">Зарегистрироваться</a></button>
+        </form>
+    </main>
+</body>
+
+</html>

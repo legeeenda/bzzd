@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    
+<link rel="stylesheet" href="main.css">
+
+<div class="prof">
+    <p>ПРОФИЛЬ: <span>Legeenda</span></p>
+</div>
+
+<body>
+    <h1>Файлообменник</h1>
+
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" id="file-input" name="file" />
+        <input type="submit" value="Загрузить" />
+        <button onclick="sortDataByName()">Сортировать по имени</button>
+        <button onclick="sortDataBySize()">Сортировать по размеру</button>
+    </form>
+    <table id="file-table">
+        <tr>
+            <th>Имя файла</th>
+            <th>Размер (в байтах)</th>
+        </tr>
+    </table>
+    
+    
+    <script>
+        let fileData = [];
+    
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            fileData.push({ name: file.name, size: file.size });
+            displayFiles();
+        });
+    
+        let filedownloadCount = 0; // Инициализируем счетчик скачиваний
+
+   function saveFile() {
+    if (fileData.length > 0) {
+        fileData.forEach(function (file) {
+            const blob = new Blob([file.name]);
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const fileExtension = file.name.split('.').pop();
+            a.download = file.name.split('.').shift() + '-copy.' + fileExtension;
+            a.addEventListener('click', function() {
+                filedownloadCount++; // Увеличиваем счетчик скачиваний при каждом клике на ссылку
+                console.log('Число скачиваний: ' + filedownloadCount); // Выводим текущее число скачиваний в консоль
+            });
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    } else {
+        console.log('Файлы не загружены');
+    }
+}
+        
+
+    
+        function displayFiles() {
+            const table = document.getElementById('file-table');
+            table.innerHTML = "<tr><th>Имя файла</th><th>Размер (в байтах)</th></tr>";
+            fileData.forEach(function(file) {
+                const row = table.insertRow(-1);
+                const cell1 = row.insertCell(0);
+                cell1.innerHTML = file.name;
+                const cell2 = row.insertCell(1);
+                cell2.innerHTML = file.size;
+            });
+        }
+    
+        function sortDataByName() {
+            fileData.sort((a, b) => a.name.localeCompare(b.name));
+            displayFiles();
+        }
+    
+        function sortDataBySize() {
+            fileData.sort((a, b) => a.size - b.size);
+            displayFiles();
+        }
+
+        
+        
+    </script>
+
+    <table id="file-tabl">
+        <tr>
+            <th>Имя файла</th>
+            <th>Дата загрузки</th>
+            <th>Размер файла</th>
+            <th>Имя пользователя</th>
+            <th>Число скачиваний</th>
+            <th>Действия</th>
+        </tr>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="main.js"></script>
+</body>
+</html>

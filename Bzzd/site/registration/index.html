@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+    <title>Регистрация</title>
+</head>
+<body>
+    <main>
+        <div class="registration_user">
+            <span>Регистрация пользователя</span>
+        </div>
+        <form method="POST" action="#">
+            <div class="name">
+                <label>Ваш логин</label>
+                <input type="text" name="signup_name" id="reg-name" placeholder="Введите логин" required>
+            </div>
+            <div class="password">
+                <label>Ваш пароль</label>
+                <input type="password" name="signup_pass" id="reg-pass" placeholder="Введите пароль" required>
+            </div>
+            <button  value="register" href="login/main/main.html" type="submit" name="form_signup_button" id="signup-sumbit">Зарегистрироваться</button>
+            <button type="submit" id="back-login-sumbit"><a href="../login/index.html">Вернуться к логину</a></button>
+        </form>
+    </main>
+</body>
+</html>
